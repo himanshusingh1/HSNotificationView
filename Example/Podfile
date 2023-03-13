@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'HSNotificationView_Example' do
+  pod 'HSNotificationView', :path => '../'
+
+  target 'HSNotificationView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

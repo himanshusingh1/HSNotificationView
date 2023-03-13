@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HSNotificationView" customModule="HSNotificationView" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="bAv-pJ-kB5"/>
+                <outlet property="icon" destination="9xS-h7-OFR" id="5Bm-xp-6HU"/>
+                <outlet property="label" destination="kor-oa-gKt" id="Pgq-Gv-x55"/>
+                <outlet property="pullDownView" destination="4kR-Qm-z7O" id="ZPn-B4-KTn"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="620" height="197"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="goV-SO-8HD">
+                    <rect key="frame" x="0.0" y="0.0" width="620" height="197"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="VgC-hD-gQo">
+                        <rect key="frame" x="0.0" y="0.0" width="620" height="197"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <blurEffect style="light"/>
+                </visualEffectView>
+                <visualEffectView opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4kR-Qm-z7O">
+                    <rect key="frame" x="294" y="188" width="32" height="5"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="AKW-bI-yX6">
+                        <rect key="frame" x="0.0" y="0.0" width="32" height="5"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="5" id="0Up-ny-LjT"/>
+                        <constraint firstAttribute="width" constant="32" id="lnX-3r-Y84"/>
+                    </constraints>
+                    <blurEffect style="regular"/>
+                </visualEffectView>
+                <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMb-Ra-H65">
+                    <rect key="frame" x="0.0" y="0.0" width="620" height="197"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc.richtext.fill.he" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9xS-h7-OFR">
+                            <rect key="frame" x="16" y="149.33333333333334" width="40" height="39.666666666666657"/>
+                            <color key="tintColor" systemColor="systemPurpleColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="6W2-lQ-OQH"/>
+                                <constraint firstAttribute="width" constant="40" id="cRO-wm-chi"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Label Label Label Label Label Label Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kor-oa-gKt">
+                            <rect key="frame" x="64" y="149" width="548" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="kor-oa-gKt" firstAttribute="leading" secondItem="9xS-h7-OFR" secondAttribute="trailing" constant="8" id="11c-sN-KXM"/>
+                        <constraint firstItem="9xS-h7-OFR" firstAttribute="leading" secondItem="KMb-Ra-H65" secondAttribute="leading" constant="16" id="299-Yd-DMB"/>
+                        <constraint firstAttribute="trailing" secondItem="kor-oa-gKt" secondAttribute="trailing" constant="8" id="U69-4c-t5h"/>
+                        <constraint firstAttribute="bottom" secondItem="9xS-h7-OFR" secondAttribute="bottom" constant="8" id="bT9-rq-z5N"/>
+                        <constraint firstItem="kor-oa-gKt" firstAttribute="top" secondItem="9xS-h7-OFR" secondAttribute="top" id="kAn-ko-vd1"/>
+                        <constraint firstAttribute="bottom" secondItem="kor-oa-gKt" secondAttribute="bottom" constant="8" id="s7h-t1-dmE"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="KMb-Ra-H65" secondAttribute="bottom" id="5Zh-Jr-pcv"/>
+                <constraint firstAttribute="bottom" secondItem="4kR-Qm-z7O" secondAttribute="bottom" constant="4" id="GDR-4D-QaH"/>
+                <constraint firstItem="KMb-Ra-H65" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="J2u-Ef-taO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="goV-SO-8HD" secondAttribute="trailing" id="Mo0-75-yZB"/>
+                <constraint firstAttribute="bottom" secondItem="goV-SO-8HD" secondAttribute="bottom" id="Th2-Ig-oMo"/>
+                <constraint firstItem="KMb-Ra-H65" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="aXZ-Yt-3uj"/>
+                <constraint firstItem="KMb-Ra-H65" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="awy-bk-Tr3"/>
+                <constraint firstItem="goV-SO-8HD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ein-zQ-YQ9"/>
+                <constraint firstItem="goV-SO-8HD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="oCp-0v-cgb"/>
+                <constraint firstItem="4kR-Qm-z7O" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="z8r-iO-HkU"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="gAr-Vp-XaF" appends="YES" id="gyf-6T-b4o"/>
+            </connections>
+            <point key="canvasLocation" x="245.80152671755724" y="-346.12676056338029"/>
+        </view>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="gAr-Vp-XaF">
+            <connections>
+                <action selector="didPanOnNotificationView:" destination="-1" id="pSt-jA-B2j"/>
+            </connections>
+        </panGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="doc.richtext.fill.he" catalog="system" width="115" height="128"/>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
