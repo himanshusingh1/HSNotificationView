@@ -15,10 +15,7 @@ let package = Package(
     targets: [
         .target(
             name: "HSNotificationView",
-            path: "HSNotificationView/Classes",
-            resources: [
-                .process("HSNotificationView.xib")
-            ]
+            path: "HSNotificationView/Classes"
         ),
     ]
 )

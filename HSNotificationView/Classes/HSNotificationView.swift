@@ -8,10 +8,10 @@
 import UIKit
 
 public class HSNotificationView: UIView {
-    @IBOutlet private var contentView: UIView!
-    @IBOutlet private weak var icon: UIImageView!
-    @IBOutlet private weak var label: UILabel!
-    @IBOutlet private weak var pullDownView: UIView!
+    private var contentView: UIView!
+    private var icon: UIImageView!
+    private var label: UILabel!
+    private var pullDownView: UIView!
     public static var height: CGFloat = 102
     private static var tag = 9999119
     
@@ -43,20 +43,86 @@ public class HSNotificationView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
-        // adding the top level view to the view hierarchy
     }
+    
     private func commonInit() {
-        Bundle(for: HSNotificationView.self).loadNibNamed("HSNotificationView", owner: self,options: nil)
-        addSubview(contentView)
-        contentView.frame = self.bounds
-        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        setupUI()
+        setupConstraints()
+        setupGestureRecognizer()
+        
         self.clipsToBounds = true
         self.layer.cornerRadius = 8
-        self.pullDownView.clipsToBounds = true
-        self.pullDownView.layer.cornerRadius = 2
-        self.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+        self.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         self.addSubview(blurredView)
         self.sendSubviewToBack(blurredView)
+    }
+    
+    private func setupUI() {
+        // Create content view
+        contentView = UIView()
+        contentView.backgroundColor = .clear
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(contentView)
+        
+        // Create icon image view
+        icon = UIImageView()
+        icon.contentMode = .scaleAspectFit
+        icon.tintColor = .systemPurple
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(icon)
+        
+        // Create label
+        label = TopAlignedLabel()
+        label.numberOfLines = 2
+        label.lineBreakMode = .byTruncatingTail
+        label.font = .systemFont(ofSize: 17)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(label)
+        
+        // Create pull down view
+        pullDownView = UIView()
+        if #available(iOS 13.0, *) {
+            pullDownView.backgroundColor = .separator
+        } else {
+            // Fallback on earlier versions
+        }
+        pullDownView.clipsToBounds = true
+        pullDownView.layer.cornerRadius = 2
+        pullDownView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(pullDownView)
+    }
+    
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            // Content view constraints
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            // Icon constraints
+            icon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            icon.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            icon.widthAnchor.constraint(equalToConstant: 40),
+            icon.heightAnchor.constraint(equalToConstant: 40),
+            
+            // Label constraints
+            label.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 8),
+            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            label.topAnchor.constraint(equalTo: icon.topAnchor),
+            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            
+            // Pull down view constraints
+            pullDownView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            pullDownView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
+            pullDownView.widthAnchor.constraint(equalToConstant: 32),
+            pullDownView.heightAnchor.constraint(equalToConstant: 5)
+        ])
+    }
+    
+    private func setupGestureRecognizer() {
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didPanOnNotificationView(_:)))
+        addGestureRecognizer(panGesture)
     }
     public static func show(font: UIFont = .systemFont(ofSize: 14), text: String,icon: UIImage? = nil, timeout: Double = 5.0,shouldCleanOldNotifications: Bool = false) {
         let view = HSNotificationView()
@@ -81,7 +147,7 @@ public class HSNotificationView: UIView {
         }
     }
     
-    @IBAction func didPanOnNotificationView(_ sender: UIPanGestureRecognizer) {
+    @objc private func didPanOnNotificationView(_ sender: UIPanGestureRecognizer) {
         let location = sender.location(in: self).y
         if location < self.frame.height/2 {
             self.hide()
