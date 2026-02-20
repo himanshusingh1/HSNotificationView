@@ -68,6 +68,8 @@ public class HSNotificationView: UIView {
         icon = UIImageView()
         icon.contentMode = .scaleAspectFit
         icon.tintColor = .systemPurple
+        icon.layer.cornerRadius = 5
+        icon.clipsToBounds = true
         icon.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(icon)
         
